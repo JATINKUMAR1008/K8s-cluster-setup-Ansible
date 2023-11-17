@@ -1,7 +1,7 @@
 [slaves]
-slave1 ansible_host=137.184.109.196
-slave2 ansible_host=142.93.53.94
-slave3 ansible_host=137.184.105.227
+slave1 ansible_host= ip address of host 1
+slave2 ansible_host= ip address of host 2
+slave3 ansible_host= ip address of host 3
 
 
 [all:vars]

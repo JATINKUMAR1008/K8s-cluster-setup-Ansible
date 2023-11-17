@@ -17,6 +17,9 @@
         - containerd
       when: ansible_os_family == 'Debian'
 
+    - name: make directory for configuration
+      command: mkdir -p /etc/containerd
+      
     - name: Configure Containerd
       template:
         src: containerd-config.toml.j2

@@ -1,1 +1,0 @@
-kubeadm_command: ['kubeadm join 137.184.109.196:6443 --token 72ma5b.4ncnfa2gyn8sjozp --discovery-token-ca-cert-hash sha256:17576812c75aaa37d3bbe413929fbd27f343f37fd31eef62ad1cbc344e15fe5a ']
