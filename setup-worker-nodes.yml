@@ -1,0 +1,36 @@
+- name: Set up workers nodes
+  hosts: 
+    - slave2
+    - slave3
+  become: yes
+
+  vars:
+    master_node_ip: 137.184.109.196
+
+  tasks:
+    - name: Install Docker and Containerd
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - docker.io
+        - containerd
+      when: ansible_os_family == 'Debian'
+
+    - name: Configure Containerd
+      template:
+        src: containerd-config.toml.j2
+        dest: /etc/containerd/config.toml
+      notify: Restart containerd
+      when: ansible_os_family == 'Debian'
+
+    - name: Load facts from the file
+      include_vars:
+        file: "./vars_file.yaml"
+    - name: Join Worker node to the cluster
+      command: "{{kubeadm_command[0]}}"
+  handlers:
+    - name: Restart containerd
+      service:
+        name: containerd
+        state: restarted

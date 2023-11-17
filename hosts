@@ -1,0 +1,9 @@
+[slaves]
+slave1 ansible_host=137.184.109.196
+slave2 ansible_host=142.93.53.94
+slave3 ansible_host=137.184.105.227
+
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_user=root 
